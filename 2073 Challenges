@@ -1,0 +1,79 @@
+@Override
+public void teloPeriodic() {
+
+//Holding A moves motor at 50%
+if (controller.getRawAxis(1)) {
+output = 0.5; }
+
+//Holding left joystick moves motor at speed corresponding to joystick position
+output = controller.getRawAxis(1);
+
+//Holding B reverses the current motor output
+if (controller.getRawButton(2) {
+output = -output;
+
+//Holding X reduces the current motor output in half
+if (controller.getRawButton(3)) {
+output = output * .5;
+
+//Limit max speed to 80%
+if (output > 0.8 || output < -0.8) {
+if (output > 0) {
+output = .8; }
+if (output < 0) {
+output = -.8; }
+}
+
+//Change any output less than 20% to be 0
+if (output > -0.2 || output < 0.2) {
+output = 0; }
+
+//Holding left trigger variably decreases the current motor output
+N/A
+
+//Holding right trigger variably increases the current motor output
+N/A
+
+//Holding L1 Pulses Motor Output
+double time;
+double previousMilliseconds = 0;
+int x;
+boolean prevValueButIdkTbh = true;
+}
+System.out.println("The current time in Milliseconds is");
+System.out.println(currentTimeMillis());
+if (controller.getRawButton(1)) {
+time = System.currentTimeMillis();
+if (time - previousMilliseconds >= 2000) {
+prevValueButIdkTbh = !prevValueButIdkTbh;
+}
+
+if (!prevValueButIdkTbh) {
+System.out.println("off")
+output = 0;
+}
+
+//Tapping Y Toggles Cruise Control On/Off
+if (controller.getRawButtonPressed(4) {
+output = output;
+}
+if (controller.getRawButtonReleased(4)) {
+output = output;
+System.out.println("Test");
+}
+
+//Tapping A Moves Motor 3 Revolutions
+if (controller.getRawButton(4)) {
+output = output;
+if (controller.getDirectionRadians(6) {
+output = 0;
+
+//Always return to starting position
+/*BULLET: If the user holds the joystick forward the motor should move at a corresponding speed
+BULLET: When the user lets go, the motor should spin in the opposite direction until it gets back to the starting position
+BULLET: While it is 'tracking back' to its starting position, the user can move the joystick forwarfd again and the motor should move forward
+BULLET: When the user lets go the second tiem (and subsequent times), it should still return to the very initial starting position
+*/
+//Always return to defined position
+/*BULLET: Similar to the last challenge but assign a button to set the "return to" position instead of just always returning to 0
+*/
